@@ -8,9 +8,7 @@ export const userRoutes = new Elysia({ prefix: "/me" })
   .use(betterAuthPlugin)
   .get(
     "/",
-    ({ user }) => {
-      return user;
-    },
+    ({ user }) => user,
     {
       auth: true,
       detail: {

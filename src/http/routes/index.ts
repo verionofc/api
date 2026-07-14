@@ -4,7 +4,7 @@ export const indexRoutes = new Elysia()
   .get(
     "/",
     () => ({
-      message: "Hello, Verion Studio, API.",
+      message: "Hello, Verion.",
     }),
     {
       detail: {
