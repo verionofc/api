@@ -1,0 +1,40 @@
+{
+  "name": "@verionofc/api",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch --env-file=.env.development.local src/server.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "start": "NODE_ENV=production node --env-file=.env.local dist/server.js",
+    "betterauth:generate": "bunx @better-auth/cli generate --config ./src/config/auth.ts --output ./src/db/schema/auth.ts --y"
+  },
+  "author": {
+    "name": "Israel R. Jatobá",
+    "enterprise": "Verion Studio, Inc.",
+    "url": "https://github.com/yeyTaken"
+  },
+  "dependencies": {
+    "@elysia/node": "^1.4.6",
+    "@elysia/static": "^1.4.11",
+    "@elysiajs/cors": "^1.4.1",
+    "@elysiajs/node": "^1.4.5",
+    "@elysiajs/openapi": "^1.4.13",
+    "argon2": "^0.44.0",
+    "axios": "^1.18.1",
+    "better-auth": "^1.6.23",
+    "chalk": "^5.6.2",
+    "drizzle-orm": "^0.45.2",
+    "elysia": "latest",
+    "mongoose": "^8",
+    "pino": "^10.1.1",
+    "postgres": "^3.4.9",
+    "uuid": "^14.0.1",
+    "zod": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "drizzle-kit": "^0.31.10",
+    "typescript": "^5"
+  }
+}
