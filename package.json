@@ -1,6 +1,6 @@
 {
   "name": "@verionofc/api",
-  "version": "1.0.0",
+  "version": "1.1",
   "type": "module",
   "scripts": {
     "dev": "bun --watch --env-file=.env.development.local src/server.ts",

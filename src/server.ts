@@ -9,10 +9,10 @@ import z from "zod";
 import { env } from "./env.js";
 import { Package } from "./config/package.js";
 
-// import { betterAuthPlugin, OpenAPI } from "#/http/plugins/better-auth";
+import { betterAuthPlugin, OpenAPI } from "./http/plugins/better-auth.js";
 
 import { indexRoutes } from "./http/routes/index.js";
-// import { userRoutes } from "./http/routes/user.js";
+import { userRoutes } from "./http/routes/user.js";
 import { aboutRoutes } from "./http/routes/about.js";
 
 import { logger } from "./utils/logger.js";
@@ -43,8 +43,8 @@ const app = new Elysia({ name: "PluginsX API", adapter: node() })
           version: Package.version,
           description: "Principal API for Verion Studio, Inc.",
         },
-        // components: (await OpenAPI.components) as any,
-        // paths: (await OpenAPI.getPaths()) as any,
+        components: (await OpenAPI.components) as any,
+        paths: (await OpenAPI.getPaths()) as any,
         tags: [
           {
             name: "Default",
@@ -62,11 +62,11 @@ const app = new Elysia({ name: "PluginsX API", adapter: node() })
       },
     }),
   )
-  // .use(betterAuthPlugin)
+  .use(betterAuthPlugin)
 
   // Routes
   .use(indexRoutes)
-  // .use(userRoutes)
+  .use(userRoutes)
   .use(aboutRoutes)
 
   .listen(
