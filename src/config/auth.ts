@@ -33,7 +33,7 @@ export const auth = betterAuth({
 
 	database: mongodbAdapter(db, {
 		client,
-		debugLogs: process.env.NODE_ENV === "development",
+		debugLogs: process.env.NODE_ENV != "production",
 	}),
 
 	plugins: [
