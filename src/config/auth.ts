@@ -27,13 +27,15 @@ const isDiscordUsername = (value: string) => {
 	return true;
 };
 
+const isDev = process.env.NODE_ENV != "production";
+
 export const auth = betterAuth({
 	basePath: "/auth",
 	trustedOrigins: [env.URL, env.DEV_URL, env.ID_URL, env.DEV_ID_URL],
 
 	database: mongodbAdapter(db, {
 		client,
-		debugLogs: process.env.NODE_ENV != "production",
+		debugLogs: isDev,
 	}),
 
 	plugins: [
@@ -66,10 +68,10 @@ export const auth = betterAuth({
 	],
 
 	advanced: {
-		// crossSubDomainCookies: {
-		// 	enabled: true,
-		// 	domain: isDev ? "localhost" : env.BETTER_AUTH_DOMAIN,
-		// },
+		crossSubDomainCookies: {
+			enabled: true,
+			domain: isDev ? "localhost" : (env.BETTER_AUTH_DOMAIN ?? ".vercel.app"),
+		},
 		database: {
 			generateId: generateSnowflakeId,
 		},

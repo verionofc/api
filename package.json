@@ -1,6 +1,6 @@
 {
   "name": "@verionofc/api",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "type": "module",
   "scripts": {
     "dev": "npx tsx --watch --env-file=.env.development.local src/server.ts",
