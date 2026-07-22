@@ -56,6 +56,9 @@ export const auth = betterAuth({
 		}),
 	],
 
+	account: {
+		skipStateCookieCheck: true,
+	},
 	advanced: {
 		database: {
 			generateId: generateSnowflakeId,
