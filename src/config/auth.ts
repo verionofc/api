@@ -31,7 +31,7 @@ const isDev = process.env.NODE_ENV != "production";
 
 export const auth = betterAuth({
 	basePath: "/auth",
-	baseURL: env.BETTER_AUTH_URL,
+	// baseURL: env.BETTER_AUTH_URL,
 	trustedOrigins: [env.URL, env.DEV_URL, env.ID_URL, env.DEV_ID_URL],
 
 	database: mongodbAdapter(db, {
@@ -57,9 +57,6 @@ export const auth = betterAuth({
 	],
 
 	advanced: {
-		crossSubDomainCookies: {
-			enabled: false,
-		},
 		database: {
 			generateId: generateSnowflakeId,
 		},

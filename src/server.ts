@@ -2,7 +2,6 @@ import { openapi } from "@elysiajs/openapi";
 import { cors } from "@elysiajs/cors";
 import { Elysia } from "elysia";
 import { node } from "@elysiajs/node";
-// import { staticPlugin } from "@elysia/static";
 
 import z from "zod";
 
@@ -54,12 +53,6 @@ const app = new Elysia({
   .use(indexRoutes)
   .use(userRoutes)
   .use(aboutRoutes)
-  // .use(
-  //   staticPlugin({
-  //     assets: "public",
-  //     prefix: "/",
-  //   }),
-  // )
   .listen({ port: env.DEFAULT_PORT }, (info) => {
     logger(`🔥 api is running at ${info.hostname}:${info.port}`);
   });
