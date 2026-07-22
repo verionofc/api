@@ -31,6 +31,7 @@ const isDev = process.env.NODE_ENV != "production";
 
 export const auth = betterAuth({
 	basePath: "/auth",
+	baseURL: env.BETTER_AUTH_URL,
 	trustedOrigins: [env.URL, env.DEV_URL, env.ID_URL, env.DEV_ID_URL],
 
 	database: mongodbAdapter(db, {
@@ -39,19 +40,7 @@ export const auth = betterAuth({
 	}),
 
 	plugins: [
-		admin(
-			// {
-			// defaultRole: "member",
-			// adminRoles: ["owner", "admin"],
-			// roles: {
-			// 	owner: ownerRole,
-			// 	admin: adminRole,
-			// 	mod: modRole,
-			// 	premium: premiumRole,
-			// 	member: memberRole,
-			// },
-			// }
-		),
+		admin(),
 		openAPI(),
 		username({
 			minUsernameLength: 2,
@@ -69,8 +58,7 @@ export const auth = betterAuth({
 
 	advanced: {
 		crossSubDomainCookies: {
-			enabled: true,
-			domain: isDev ? "localhost" : (env.BETTER_AUTH_DOMAIN ?? ".vercel.app"),
+			enabled: false,
 		},
 		database: {
 			generateId: generateSnowflakeId,
